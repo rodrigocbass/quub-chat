@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 
 import br.com.quub.model.User;
 
-public class UserRepositoryImpl implements UserRepository {
+public class UserRepositoryImpl implements UserRepositoryQuery {
 
 	@PersistenceContext
 	private EntityManager manager;

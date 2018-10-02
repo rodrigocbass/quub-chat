@@ -1,32 +1,36 @@
 package br.com.quub.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "USER")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false, length = 20)
+	@Column(name = "USER_ID", nullable = false, length = 20)
 	private Long id;
 
 	@NotNull
 	@Size(min = 3, max = 45)
-	@Column(name = "nome")
+	@Column(name = "NOME")
 	private String nome;
 
 	@NotNull
 	@Size(min = 11, max = 11)
-	@Column(name = "cpf")
+	@Column(name = "CPF")
 	private Long cpf;
 
 	@NotNull
 	@Size(min = 3, max = 255)
-	@Column(name = "email", length = 255)
+	@Column(name = "EMAIL", length = 255)
 	private String email;
 
 	public Long getId() {

@@ -61,11 +61,12 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.sendgrid/sendgrid-java -->
+		<!--
 		<dependency>
 			<groupId>com.sendgrid</groupId>
 			<artifactId>sendgrid-java</artifactId>
 			<version>4.2.1</version>
-		</dependency>
+		</dependency>-->
 
 		<!-- Hibernate Java 8 Support -->
 		<dependency>
