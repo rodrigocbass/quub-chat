@@ -6,6 +6,6 @@ import br.com.quub.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryQuery{
 
-	public User validaUsuario(String email, Long cpf);
+	public User validaUsuario(String email, String cpf);
 
 }

@@ -26,7 +26,7 @@ public class User {
 	@NotNull
 	@Size(min = 11, max = 11)
 	@Column(name = "CPF")
-	private Long cpf;
+	private String cpf;
 
 	@NotNull
 	@Size(min = 3, max = 255)
@@ -49,11 +49,11 @@ public class User {
 		this.nome = nome;
 	}
 
-	public Long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -63,11 +63,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", email=" + email + "]";
 	}
 
 	@Override
@@ -113,4 +108,5 @@ public class User {
 		return true;
 	}
 
+	
 }

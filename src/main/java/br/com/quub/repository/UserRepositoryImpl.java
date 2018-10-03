@@ -18,7 +18,7 @@ public class UserRepositoryImpl implements UserRepositoryQuery {
 	private EntityManager manager;
 
 	@Override
-	public User validaUsuario(String email, Long cpf) {
+	public User validaUsuario(String email, String cpf) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<User> criteria = builder.createQuery(User.class);
 		Root<User> root = criteria.from(User.class);
@@ -28,7 +28,7 @@ public class UserRepositoryImpl implements UserRepositoryQuery {
 		return manager.createQuery(criteria).getSingleResult();
 	}
 
-	private Predicate[] criarRestricoes(String email, Long cpf, CriteriaBuilder builder, Root<User> root) {
+	private Predicate[] criarRestricoes(String email, String cpf, CriteriaBuilder builder, Root<User> root) {
 		List<Predicate> predicates = new ArrayList<>();
 
 		predicates.add(builder.equal(root.get("email"), email));
