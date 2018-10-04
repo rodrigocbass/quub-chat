@@ -6,7 +6,7 @@
 	<groupId>br.com.quub</groupId>
 	<artifactId>quub-chat</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>quub-chat</name>
 	<description>Projeto QUUB-CHAT API</description>

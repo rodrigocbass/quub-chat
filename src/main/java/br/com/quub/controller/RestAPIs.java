@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,17 +31,16 @@ public class RestAPIs {
 	private ChatStorage chatStorage;
 
 	@PostMapping(value = "/api/user")
-	public Chat postCustomer(@RequestBody User user) {
-		Chat chat = new Chat();
+	public ResponseEntity<User> postCustomer(@RequestBody User user) {
+		User userReturn = null;
 		try {
-			User userSalvo = userService.validarUsuario(user);
-			chat.setUser(userSalvo);
+			userReturn = userService.validarUsuario(user);
+			return ResponseEntity.ok(userReturn);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return (ResponseEntity<User>) ResponseEntity.notFound();
 		}
 
-		// jmsProducer.send(user);
-		return chat;
 	}
 
 	@GetMapping(value = "/api/chats")

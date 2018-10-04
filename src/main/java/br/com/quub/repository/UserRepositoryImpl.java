@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -25,7 +26,8 @@ public class UserRepositoryImpl implements UserRepositoryQuery {
 		Predicate[] predicates = criarRestricoes(email, cpf, builder, root);
 		criteria.where(predicates);
 
-		return manager.createQuery(criteria).getSingleResult();
+		List<User> lista =  manager.createQuery(criteria).getResultList();
+		return (lista != null && !lista.isEmpty()) ? lista.get(0) : null;
 	}
 
 	private Predicate[] criarRestricoes(String email, String cpf, CriteriaBuilder builder, Root<User> root) {

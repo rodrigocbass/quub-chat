@@ -16,9 +16,15 @@ public class UserService {
 		User userSalvo = userRepository.validaUsuario(user.getEmail(), user.getCpf());
 
 		if (userSalvo != null) {
+			userSalvo.setNickName(user.getNickName());
 			return userSalvo;
 		} else {
-			throw new Exception("usuario.usuario.nao.existente");
+			// throw new Exception("usuario.usuario.nao.existente");
+			User usuarioConvidado = new User();
+			usuarioConvidado.setNickName(user.getNickName());
+			usuarioConvidado.setNome("Convidado");
+			usuarioConvidado.setEmail("convidado@quub.com.br");
+			return usuarioConvidado;
 		}
 	}
 
