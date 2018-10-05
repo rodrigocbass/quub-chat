@@ -36,6 +36,9 @@ public class User {
 	
 	@Transient
 	private String nickName;
+	
+	@Transient
+	private int codAcesso;
 
 	public String getNickName() {
 		return nickName;
@@ -77,13 +80,20 @@ public class User {
 		this.email = email;
 	}
 
+	public int getCodAcesso() {
+		return codAcesso;
+	}
+
+	public void setCodAcesso(int codAcesso) {
+		this.codAcesso = codAcesso;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -106,11 +116,6 @@ public class User {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (nome == null) {
 			if (other.nome != null)

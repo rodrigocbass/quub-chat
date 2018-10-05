@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.quub.jms.producer.JmsProducer;
 import br.com.quub.model.Chat;
-import br.com.quub.model.ChatStorage;
 import br.com.quub.model.User;
+import br.com.quub.model.storage.ChatStorage;
 import br.com.quub.service.UserService;
 
 @CrossOrigin(origins = "*")
