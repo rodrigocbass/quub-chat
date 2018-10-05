@@ -1,4 +1,4 @@
-package br.com.quub.repository;
+package br.com.quub.repository.user;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.quub.repository;
+package br.com.quub.repository.user;
 
 import br.com.quub.model.User;
 

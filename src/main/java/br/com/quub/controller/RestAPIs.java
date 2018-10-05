@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.quub.jms.producer.JmsProducer;
 import br.com.quub.model.Chat;
+import br.com.quub.model.PalavraRestrita;
 import br.com.quub.model.User;
 import br.com.quub.model.storage.ChatStorage;
+import br.com.quub.repository.palavrarestrita.PalavraRestritaRepository;
 import br.com.quub.service.UserService;
 
 @CrossOrigin(origins = "*")
@@ -23,6 +25,9 @@ public class RestAPIs {
 
 	@Autowired
 	JmsProducer jmsProducer;
+
+	@Autowired
+	private PalavraRestritaRepository palavraRestritaRepository;
 
 	@Autowired
 	private UserService userService;
@@ -40,7 +45,11 @@ public class RestAPIs {
 			e.printStackTrace();
 			return (ResponseEntity<User>) ResponseEntity.notFound();
 		}
+	}
 
+	@GetMapping(value = "/api/restricoes")
+	public List<PalavraRestrita> getListaRestricoes() {
+		return palavraRestritaRepository.findAll();
 	}
 
 	@GetMapping(value = "/api/chats")
