@@ -22,7 +22,6 @@ public class UserService {
 		} else {
 			// throw new Exception("usuario.usuario.nao.existente");
 			User usuarioConvidado = new User();
-			usuarioConvidado.setId(new Long(0));
 			usuarioConvidado.setNickName(user.getNickName());
 			usuarioConvidado.setNome("Convidado");
 			usuarioConvidado.setEmail("convidado@quub.com.br");

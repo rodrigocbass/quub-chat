@@ -1,5 +1,7 @@
 package br.com.quub.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "PALAVRAS_RESTRITAS")
-public class PalavraRestrita {
+public class PalavraRestrita implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

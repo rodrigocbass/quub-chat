@@ -1,8 +1,13 @@
 package br.com.quub.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Chat {
+public class Chat implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String msg;
 	private User user;

@@ -1,5 +1,7 @@
 package br.com.quub.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "USER")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +40,10 @@ public class User {
 	@Size(min = 3, max = 255)
 	@Column(name = "EMAIL", length = 255)
 	private String email;
-	
+
 	@Transient
 	private String nickName;
-	
+
 	@Transient
 	private int codAcesso;
 
@@ -125,5 +132,4 @@ public class User {
 		return true;
 	}
 
-	
 }

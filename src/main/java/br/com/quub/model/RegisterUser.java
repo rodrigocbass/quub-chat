@@ -1,16 +1,63 @@
 package br.com.quub.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class RegisterUser {
-	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "USER_REGISTER")
+public class RegisterUser implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "REG_USE_ID", nullable = false, length = 20)
 	private Long id;
-	
+
+	@NotNull
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "USER_ID")
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private User user;
-	
+
+	@JsonIgnore
+	@Column(name = "DATA_CONEXAO")
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "YYYY-MM-DD")
 	private Date dataConexao;
-	
+
+	@NotNull
+	@Column(name = "ATIVO")
 	private boolean ativo;
+
+	public RegisterUser() {
+
+	}
+
+	public RegisterUser(Long id, User user) {
+		this.id = id;
+		this.user = user;
+	}
 
 	public Long getId() {
 		return id;
@@ -74,7 +121,5 @@ public class RegisterUser {
 			return false;
 		return true;
 	}
-	
-	
 
 }
