@@ -13,6 +13,7 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public User validarUsuario(User user) throws Exception {
+		user.setCpf(trataCpf(user.getCpf()));
 		User userSalvo = userRepository.validaUsuario(user.getEmail(), user.getCpf());
 
 		if (userSalvo != null) {
@@ -20,16 +21,26 @@ public class UserService {
 			userSalvo.setCodAcesso(userSalvo.hashCode());
 			return userSalvo;
 		} else {
-			// throw new Exception("usuario.usuario.nao.existente");
-			User usuarioConvidado = new User();
-			usuarioConvidado.setNickName(user.getNickName());
-			usuarioConvidado.setNome("Convidado");
-			usuarioConvidado.setEmail("convidado@quub.com.br");
-			
-			usuarioConvidado.setCodAcesso(usuarioConvidado.hashCode());
-			
-			return usuarioConvidado;
+			throw new Exception("usuario.usuario.nao.existente");
+			/*
+			 * User usuarioConvidado = new User();
+			 * usuarioConvidado.setNickName(user.getNickName());
+			 * usuarioConvidado.setNome("Convidado");
+			 * usuarioConvidado.setEmail("convidado@quub.com.br");
+			 * 
+			 * usuarioConvidado.setCodAcesso(usuarioConvidado.hashCode());
+			 * 
+			 * return usuarioConvidado;
+			 */
 		}
+	}
+
+	private String trataCpf(String cpf) {
+		String cpfTratado = null;
+		if (cpf != null) {
+			cpfTratado = cpf.replaceAll("[^a-zZ-Z0-9 ]", "");
+		}
+		return cpfTratado;
 	}
 
 }
