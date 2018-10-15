@@ -43,6 +43,9 @@ public class User implements Serializable {
 
 	@Transient
 	private String nickName;
+	
+	@Transient
+	private String ipPublico;
 
 	@Transient
 	private int codAcesso;
@@ -94,6 +97,15 @@ public class User implements Serializable {
 	public void setCodAcesso(int codAcesso) {
 		this.codAcesso = codAcesso;
 	}
+	
+	public String getIpPublico() {
+		return ipPublico;
+	}
+
+	public void setIpPublico(String ipPublico) {
+		this.ipPublico = ipPublico;
+	}
+		
 
 	@Override
 	public int hashCode() {
@@ -131,5 +143,6 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
+
 
 }
