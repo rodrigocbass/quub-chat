@@ -49,6 +49,9 @@ public class RegisterUser implements Serializable {
 	@NotNull
 	@Column(name = "ATIVO")
 	private boolean ativo;
+	
+	@Column(name = "COD_ACESSO")
+	private String codAcesso;
 
 	public RegisterUser() {
 
@@ -89,6 +92,15 @@ public class RegisterUser implements Serializable {
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+
+	public String getCodAcesso() {
+		return codAcesso;
+	}
+
+	public void setCodAcesso(String codAcesso) {
+		this.codAcesso = codAcesso;
 	}
 
 	@Override

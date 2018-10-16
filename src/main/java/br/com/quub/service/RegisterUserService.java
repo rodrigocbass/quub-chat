@@ -26,6 +26,7 @@ public class RegisterUserService {
 			register.setUser(user);
 			register.setDataConexao(new Date());
 			register.setAtivo(true);
+			register.setCodAcesso(String.valueOf(user.getCodAcesso()));
 
 			// persiste registro
 			registerUserRepository.save(register);
